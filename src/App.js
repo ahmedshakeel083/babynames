@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React , { useState} from 'react';
+import NamePicker from './components/NamePicker';
+import Search from './components/Search';
+import { ShortList } from './components/ShortList';
+import Reset from './components/Reset';
 
 function App() {
+
+  const [search, setSearch] = useState('');
+  const [shortlist, setShortlist] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Search search={search} setSearch={setSearch} />
+    <ShortList shortlist={shortlist} setShortlist={setShortlist} />
+    <NamePicker search={search} shortlist={shortlist} setShortlist={setShortlist} />
+    <Reset search={search} setSearch={setSearch} />
+    </>
   );
 }
 
